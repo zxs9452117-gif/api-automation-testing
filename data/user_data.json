@@ -1,0 +1,11 @@
+{
+  "valid_new_user": {
+    "name": "Gemini Assistant",
+    "username": "gemini_pro",
+    "email": "gemini.pro@example.com"
+  },
+  "invalid_new_user_missing_email": {
+    "name": "Error User",
+    "username": "error_dude"
+  }
+}
