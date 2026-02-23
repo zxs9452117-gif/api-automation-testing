@@ -1,3 +1,5 @@
+from utils.validator import validate_json_schema
+
 class TestProductCRUD:
 
     def test_create_and_verify_product(self, product_api):
@@ -20,14 +22,14 @@ class TestProductCRUD:
         """
         測試場景：獲取單一貼文詳情 (Read)
         """
-        product_id = 1  # 測試已知存在的 ID
+        product_id = 1
         response = product_api.get_product_details(product_id)
 
         assert response.status_code == 200
         res_data = response.json()
+        validate_json_schema(res_data, "product_schema.json")
         assert res_data["id"] == product_id
-        assert isinstance(res_data["title"], str)
-        print(f"\n[Read] 成功獲取產品名稱: {res_data['title']}")
+        print(f"\n[Read] 成功獲取並驗證產品 ID {product_id} 的結構與內容")
 
     def test_update_product_completely(self, product_api):
         """

@@ -10,3 +10,6 @@ allure-pytest==2.15.3
 
 # 假資料生成工具 (擴充)
 Faker==40.4.0
+
+# 驗證json格式
+jsonschema==4.26.0
