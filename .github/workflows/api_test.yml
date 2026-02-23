@@ -25,13 +25,13 @@ jobs:
         pip install -r requirements.txt
 
     - name: Run Tests with Pytest
-      # 這裡我們加上產生 html 報告的指令
+      env:
+        PYTHONPATH: .
       run: |
-        pytest -v -s --html=report.html --self-contained-html
+        python -m pytest -v -s --html=report.html --self-contained-html
 
     - name: Upload Test Report
-      # 使用最新的 v4 版本，解決你遇到的 Error
-      if: always() # 確保測試失敗也會上傳報告，方便除錯
+      if: always()
       uses: actions/upload-artifact@v4
       with:
         name: api-test-report
